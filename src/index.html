@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-ng-app="mainApp" data-ng-controller="mainApp.rootController">
+<html lang="en" data-ng-app="mainApp" data-ng-controller="mainApp.rootController">
 <head>
   <title>Storm ID</title>
   <meta charset="utf-8"/>
@@ -30,14 +30,14 @@
 
             <div class="task-checkbox">
               <input type="checkbox" class="task-input" id="check-{{$index}}">
-              <label class="task-label" for="check-{{$index}}"></label>
+              <label class="task-label" for="check-{{$index}}" aria-label="{{task.title}}"></label>
             </div>
 
             <div class="media-body">
               {{task.title}}
             </div>
 
-            <button class="btn btn-edit btn-sm">
+            <button class="btn btn-edit btn-sm" aria-label="Edit">
               <i class="fa fa-pencil-alt"></i>
             </button>
 
