@@ -4,13 +4,51 @@
   <title>Storm ID</title>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body data-ng-controller="mainApp.mainController">
-  <h1 data-ng-if="data.$$state.loading"> I am an ugly loader</h1>
-  <ul data-ng-if="!data.$$state.loading">
-    <li data-ng-repeat="task in data.tasks">
-      {{task.title}}
-    </li>
-  </ul>
+
+  <div class="container pt-4">
+    <div class="row">
+
+      <div class="col">
+        <h1 class="ml-2">Todo list</h1>
+      </div>
+
+      <div class="col text-right">
+        <button class="btn btn-lg"><i class="fa fa-plus"></i> Add Item</button>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <ul class="task-group mt-4">
+
+          <li class="task-group-item media" data-ng-repeat="task in data.tasks" data-task-importance="task.importance">
+
+            <div class="task-checkbox">
+              <input type="checkbox" class="task-input" id="check-{{$index}}">
+              <label class="task-label" for="check-{{$index}}"></label>
+            </div>
+
+            <div class="media-body">
+              {{task.title}}
+            </div>
+
+            <button class="btn btn-edit btn-sm">
+              <i class="fa fa-pencil-alt"></i>
+            </button>
+
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+
 </body>
 </html>

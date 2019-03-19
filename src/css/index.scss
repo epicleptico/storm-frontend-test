@@ -1,0 +1,15 @@
+@import "fonts";
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+
+@import "buttons";
+@import "taskItems";
+@import "customCheckbox";
+
+body {
+  background-color: #fafafa;
+}
+
+.container {
+  border-top: .5em solid $black;
+}

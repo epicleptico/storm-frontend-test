@@ -1,7 +1,8 @@
 //Import application
-import './app/app';
-import './app/controllers';
-import './app/services';
+import './app';
+import 'bootstrap';
+
+import '../css/index.scss';
 
 
 {

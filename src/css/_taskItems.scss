@@ -1,0 +1,63 @@
+.task-group {
+
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+
+  .task-group-item {
+    padding: $list-group-item-padding-y $list-group-item-padding-x;
+    margin-bottom: .25em;
+    color: $list-group-color;
+    background-color: $list-group-bg;
+    border-left: .25em solid darken($list-group-bg, 25);
+
+
+    .btn-edit {
+      visibility: hidden;
+    }
+
+    &:hover, &.active {
+      .btn-edit {
+        visibility: visible;
+      }
+    }
+
+    transition: background-color .15s ease-out;
+
+
+    &.bg-danger {
+      background-color: rgba($taskItem-danger-color, .25) !important;
+      border-left-color: $taskItem-danger-color;
+      font-weight: 500;
+
+      &:hover {
+        background-color: rgba($taskItem-danger-color, .5) !important;
+      }
+    }
+
+    &.bg-warning {
+      background-color: rgba($taskItem-warning-color, .25) !important;
+      border-left-color: $taskItem-warning-color;
+      color: lighten($dark, 20);
+      font-weight: 300;
+
+      &:hover {
+        background-color: rgba($taskItem-warning-color, .5) !important;
+        color: $dark;
+      }
+    }
+
+    &.bg-info {
+      background-color: rgba($taskItem-info-color, .25) !important;
+      border-left-color: $taskItem-info-color;
+      color: lighten($dark, 30);
+      font-weight: 200;
+
+      &:hover {
+        background-color: rgba($taskItem-info-color, .5) !important;
+        color: $dark;
+      }
+    }
+  }
+}

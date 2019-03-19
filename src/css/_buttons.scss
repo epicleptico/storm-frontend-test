@@ -1,0 +1,24 @@
+.btn {
+  border: 2px solid $white;
+  border-radius: 1.25em;
+  background-color: $white;
+  box-shadow: 2px 2px 2px 0px $button_box-shadow-color;
+  color: $black;
+
+  transition: box-shadow .25s ease-out, border-color .25s ease-out, background-color .25s ease-out;
+
+  &:hover{
+    box-shadow: 4px 4px 2px 0px $button_box-shadow-color;
+    border-color: $gray-200;
+  }
+
+  &:focus {
+    box-shadow: 4px 4px 2px 0px $button_box-shadow-color;
+    border-color: $input-btn-focus-color;
+  }
+
+
+  &.btn-edit {
+    padding: 0rem 1rem;
+  }
+}
