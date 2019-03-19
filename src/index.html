@@ -9,46 +9,48 @@
 </head>
 <body data-ng-controller="mainApp.mainController">
 
-  <div class="container pt-4">
-    <div class="row">
+<div class="loader" data-ng-if="data.$$state.loading" data-ng-cloak>
+  <div class="loading-indicator"></div>
+</div>
 
-      <div class="col">
-        <h1 class="ml-2">Todo list</h1>
-      </div>
+<div class="container pt-4">
+  <div class="row">
 
-      <div class="col text-right">
-        <button class="btn btn-lg"><i class="fa fa-plus"></i> Add Item</button>
-      </div>
-
+    <div class="col">
+      <h1 class="ml-2">Todo list</h1>
     </div>
 
-    <div class="row">
-      <div class="col">
-        <ul class="task-group mt-4">
-
-          <li class="task-group-item media" data-ng-repeat="task in data.tasks" data-task-importance="task.importance">
-
-            <div class="task-checkbox">
-              <input type="checkbox" class="task-input" id="check-{{$index}}">
-              <label class="task-label" for="check-{{$index}}" aria-label="{{task.title}}"></label>
-            </div>
-
-            <div class="media-body">
-              {{task.title}}
-            </div>
-
-            <button class="btn btn-edit btn-sm" aria-label="Edit">
-              <i class="fa fa-pencil-alt"></i>
-            </button>
-
-          </li>
-
-        </ul>
-      </div>
+    <div class="col text-right">
+      <button class="btn btn-lg"><i class="fa fa-plus"></i> Add Item</button>
     </div>
-
 
   </div>
+
+  <div class="row" data-ng-if="!data.$$state.loading">
+    <div class="col">
+      <ul class="task-group mt-4">
+
+        <li class="task-group-item media" data-ng-repeat="task in data.tasks" data-task-importance="task.importance">
+
+          <div class="task-checkbox">
+            <input type="checkbox" class="task-input" id="check-{{$index}}">
+            <label class="task-label" for="check-{{$index}}" aria-label="{{task.title}}"></label>
+          </div>
+
+          <div class="media-body">
+            {{task.title}}
+          </div>
+
+          <button class="btn btn-edit btn-sm" aria-label="Edit">
+            <i class="fa fa-pencil-alt"></i>
+          </button>
+
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
