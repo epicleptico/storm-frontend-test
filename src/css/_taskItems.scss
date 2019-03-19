@@ -25,6 +25,9 @@
 
     transition: background-color .15s ease-out;
 
+    &:hover{
+      cursor: pointer;
+    }
 
     &.bg-danger {
       background-color: rgba($taskItem-danger-color, .25) !important;
