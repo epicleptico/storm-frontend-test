@@ -6,5 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body data-ng-controller="mainApp.mainController">
+  <h1 data-ng-if="data.$$state.loading"> I am an ugly loader</h1>
+  <ul data-ng-if="!data.$$state.loading">
+    <li data-ng-repeat="task in data.tasks">
+      {{task.title}}
+    </li>
+  </ul>
 </body>
 </html>

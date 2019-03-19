@@ -1,7 +1,7 @@
 import ng from 'angular';
 import 'format-unicorn';
 
-const SERVICE_NAME = 'taskService';
+const SERVICE_NAME = 'task.service';
 const HTTP_SCHEME = 'http';
 const HTTP_HOST = '127.0.0.1';
 const HTTP_PORT = 4000;
@@ -17,8 +17,8 @@ class TaskService {
    * Get all tasks
    * @returns {Promise<*>}
    */
-  async getAll() {
-    return await this.$http.get(_getURL('/api/task'));
+  getAll() {
+    return this.$http.get(_getURL('/api/task'));
   }
 
   /**
@@ -26,8 +26,8 @@ class TaskService {
    * @param taskId
    * @returns {Promise<*>}
    */
-  async get(taskId) {
-    return await this.$http.get(_getURL('/api/task/{taskId}'.formatUnicorn({taskId: taskId})));
+  get(taskId) {
+    return this.$http.get(_getURL('/api/task/{taskId}'.formatUnicorn({taskId: taskId})));
   }
 
   /**
@@ -35,8 +35,8 @@ class TaskService {
    * @param newTask
    * @returns {Promise<*>}
    */
-  async create(newTask) {
-    return await this.$http.post(_getURL('/api/task/'), newTask);
+  reate(newTask) {
+    return this.$http.post(_getURL('/api/task/'), newTask);
   }
 
   /**
@@ -45,8 +45,8 @@ class TaskService {
    * @param taskData
    * @returns {Promise<*>}
    */
-  async update(taskId, taskData) {
-    return await this.$http.post(_getURL('/api/task/{taskId}'.formatUnicorn({taskId: taskId})), taskData);
+  update(taskId, taskData) {
+    return this.$http.post(_getURL('/api/task/{taskId}'.formatUnicorn({taskId: taskId})), taskData);
   }
 
   /**
@@ -54,8 +54,8 @@ class TaskService {
    * @param taskId
    * @returns {Promise<*>}
    */
-  async delete(taskId) {
-    return await this.$http.delete(_getURL('/api/task/{taskId}'.formatUnicorn({taskId: taskId})));
+  delete(taskId) {
+    return this.$http.delete(_getURL('/api/task/{taskId}'.formatUnicorn({taskId: taskId})));
   }
 }
 
