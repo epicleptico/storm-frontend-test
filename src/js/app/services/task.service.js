@@ -35,7 +35,7 @@ class TaskService {
    * @param newTask
    * @returns {Promise<*>}
    */
-  reate(newTask) {
+  create(newTask) {
     return this.$http.post(_getURL('/api/task/'), newTask);
   }
 
@@ -46,7 +46,7 @@ class TaskService {
    * @returns {Promise<*>}
    */
   update(taskId, taskData) {
-    return this.$http.post(_getURL('/api/task/{taskId}'.formatUnicorn({taskId: taskId})), taskData);
+    return this.$http.patch(_getURL('/api/task/{taskId}'.formatUnicorn({taskId: taskId})), taskData);
   }
 
   /**

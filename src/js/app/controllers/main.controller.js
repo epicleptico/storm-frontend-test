@@ -15,6 +15,17 @@ function _fn($sc, $taskService) {
 
   _init();
 
+  /**
+   * When task is done changed...
+   * @param task
+   */
+  $sc.onChange_taskIsDone = function(task) {
+    console.log(task);
+    $taskService.update(task.id, {
+      isDone: task.isDone == 'true' ? 'true': 'false'
+    });
+  };
+
   function _init() {
     $sc._NAME = CONTROLLER_NAME;
     $sc.data = _data;

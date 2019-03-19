@@ -33,7 +33,13 @@
         <li class="task-group-item media" data-ng-repeat="task in data.tasks" data-task-importance="task.importance">
 
           <div class="task-checkbox">
-            <input type="checkbox" class="task-input" id="check-{{$index}}">
+            <input type="checkbox"
+                   class="task-input"
+                   id="check-{{$index}}"
+                   data-ng-model="task.isDone"
+                   data-ng-true-value="'true'"
+                   data-ng-change="onChange_taskIsDone(task)"
+            >
             <label class="task-label" for="check-{{$index}}" aria-label="{{task.title}}"></label>
           </div>
 
