@@ -7,33 +7,39 @@
 
   .task-group-item {
     padding: $list-group-item-padding-y $list-group-item-padding-x;
+    padding-right: .5em;
     margin-bottom: .25em;
     color: $list-group-color;
     background-color: $list-group-bg;
     border-left: .25em solid darken($list-group-bg, 25);
+    cursor: pointer;
 
 
-    .btn-edit {
-      visibility: hidden;
+    .media-buttons {
+      margin-left: .25em;
     }
+    
+    @include media-breakpoint-up(md) {
+      .media-buttons { visibility: hidden; }
 
-    &:hover, &.active {
-      .btn-edit {
-        visibility: visible;
+      &:hover, &.active {
+        .media-buttons {
+          visibility: visible;
+        }
       }
     }
 
-    transition: background-color .15s ease-out;
-
-    &:hover{
-      cursor: pointer;
+    &.active {
+      cursor: default;
     }
+
+    transition: background-color .15s ease-out;
 
     &.bg-danger {
       background-color: rgba($taskItem-danger-color, .15) !important;
       border-left-color: $taskItem-danger-color;
 
-      &:hover {
+      &:hover, &.active {
         background-color: rgba($taskItem-danger-color, .5) !important;
       }
     }
@@ -42,7 +48,7 @@
       background-color: rgba($taskItem-warning-color, .15) !important;
       border-left-color: $taskItem-warning-color;
 
-      &:hover {
+      &:hover, &.active {
         background-color: rgba($taskItem-warning-color, .5) !important;
       }
     }
@@ -52,7 +58,7 @@
       border-left-color: $taskItem-info-color;
       color: lighten($black, 20);
 
-      &:hover {
+      &:hover, &.active{
         background-color: rgba($taskItem-info-color, .5) !important;
       }
     }

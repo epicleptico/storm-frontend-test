@@ -21,16 +21,22 @@
     </div>
 
     <div class="col text-right">
-      <button class="btn btn-lg"><i class="fa fa-plus"></i> Add Item</button>
+      <button class="btn btn-lg" data-ng-click="onClick_addNewTask()"><i class="fa fa-plus"></i> Add Item</button>
     </div>
 
   </div>
 
   <div class="row" data-ng-if="!data.$$state.loading">
     <div class="col">
+
+      <h3 class="mt-4 text-center" data-ng-if="data.tasks.length === 0">There are no tasks, please, <a href="" data-ng-click="onClick_addNewTask()">create a new one</a></h3>
+
       <ul class="task-group mt-4">
 
-        <li class="task-group-item media" data-ng-repeat="task in data.tasks" data-task-importance="task.importance">
+        <li class="task-group-item media"
+            data-ng-repeat="task in data.tasks"
+            data-ng-class="{'active': task.$$state.onEditMode}"
+            data-task-importance="task.$$state.onEditMode ? task.$$edit.importance : task.importance">
 
           <div class="task-checkbox">
             <input type="checkbox"
@@ -38,24 +44,70 @@
                    id="check-{{$index}}"
                    data-ng-model="task.isDone"
                    data-ng-true-value="'true'"
-                   data-ng-change="onChange_taskIsDone(task)"
-            >
+                   data-ng-change="onChange_taskIsDone(task)">
             <label class="task-label" for="check-{{$index}}" aria-label="{{task.title}}"></label>
           </div>
 
-          <div class="media-body">
-            {{task.title}}
+          <div class="media-body" data-ng-click="onClick_editTask($event, task)">
+
+            <span data-ng-if="!task.$$state.onEditMode">{{task.title}}</span>
+
+            <div class="form-inline mb-0" data-ng-if="task.$$state.onEditMode">
+
+              <input type="text"
+                     class="form-control form-control-sm col-7"
+                     data-ng-focus-on="'task-' + task.id"
+                     data-ng-class="{'is-invalid': task.$$edit.has_error}"
+                     data-ng-change="onChange_taskTitle(task)"
+                     data-ng-keydown="onKeydown_taskTitle($event, task)"
+                     data-ng-model="task.$$edit.title">
+
+              <select class="form-control form-control-sm col-4 offset-1"
+                      data-ng-click="$event.stopPropagation()"
+                      data-ng-model="task.$$edit.importance">
+                <option value="0">Low priority</option>
+                <option value="1">Average priority</option>
+                <option value="2">High priority</option>
+              </select>
+            </div>
+
           </div>
 
-          <button class="btn btn-edit btn-sm" aria-label="Edit">
-            <i class="fa fa-pencil-alt"></i>
-          </button>
+
+          <div class="media-buttons" data-ng-if="!task.$$state.onEditMode">
+
+            <button class="btn btn-round btn-sm"
+                    aria-label="Edit"
+                    data-ng-click="onClick_editTask($event, task)">
+              <i class="fa fa-pencil-alt"></i>
+            </button>
+
+            <button class="btn btn-round btn-sm"
+                    aria-label="Edit"
+                    data-ng-click="onClick_removeTask($event, task)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+
+          <div class="media-buttons" data-ng-if="task.$$state.onEditMode && task.id">
+            <button class="btn btn-round btn-sm" aria-label="Cancel"
+                    data-ng-click="onClick_cancelEditTask($event, task)">
+              <i class="fa fa-times"></i>
+            </button>
+
+            <button class="btn btn-round btn-sm" aria-label="Cancel"
+                    data-ng-click="onClick_confirmEditTask($event, task)">
+              <i class="fa fa-check"></i>
+            </button>
+          </div>
+
 
         </li>
 
       </ul>
     </div>
   </div>
+
 </div>
 
 </body>

@@ -21,7 +21,9 @@ function _fn() {
         $element.removeClass(importanceClass);
       }
 
-      if(typeof newValue == "number" && newValue >= 0 && newValue < IMPORTANCE_CLASSES.length) {
+      let value = parseInt(newValue);
+
+      if(!isNaN(value) && newValue >= 0 && newValue < IMPORTANCE_CLASSES.length) {
         $element.addClass(IMPORTANCE_CLASSES[newValue]);
       }
 
